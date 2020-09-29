@@ -16,7 +16,7 @@
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
+# import numpy as np
 import warnings
 
 from . import plotting
@@ -430,9 +430,9 @@ def create_turnover_tear_sheet(factor_data, turnover_periods=None):
     """
 
     if turnover_periods is None:
-        input_periods = np.array(utils.get_forward_returns_columns(
+        input_periods = utils.get_forward_returns_columns(
             factor_data.columns, require_exact_day_multiple=True,
-        ).values)
+        ).get_values()
         turnover_periods = utils.timedelta_strings_to_integers(input_periods)
     else:
         turnover_periods = utils.timedelta_strings_to_integers(
